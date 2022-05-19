@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid" style="background-color:#ffb5a7;height: 100vh;">
     <div class="row">
         <!-- displaying  Username-->
         <div class="col-md-4">
@@ -13,21 +13,30 @@
             {%else%}
             <p> {{user.username| capitalize}} has no bio </p>
             {% endif %}
+            {%if user == current_user %}
+            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit Profile</a>
+            {%endif%}
         </div>
-        
-        {% extends 'base.html'%}
 
-        {% block content %}
-        <div class="container">
-            <div class="row">
-                <!-- displaying  Username-->
-                <div class="col-md-4">
-                    <h3> {{user.username| capitalize}} </h3>
+        <!--Display profile photo-->
+        <div class="col-md-4"
+            style="background-color: rgb(240, 231, 235); box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;margin-top: 20px;">
 
-                    <!--Displaying user bio-->
-                    {% if user.bio %}
-                    <p> {{user.bio}}</p>
-                    {%else%}
-                    <p> {{user.username| capitalize}} has no bio </p>
-                    {% endif %}
-                </div>
+            {% if user.profile_pic_path %}
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail" width="70px"
+                height="100px">
+            {%else%}
+            {% endif %}
+            <p>No profile picture</p>
+            {% if user == current_user %}
+            <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
+                enctype="multipart/form-data">
+
+                <input type="file" name="photo" class="form-control" required>
+                <input type="submit">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
