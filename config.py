@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SECRET_KEY =('SECRET_KEY')
+    SECRET_KEY ='SECRET_KEY'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
