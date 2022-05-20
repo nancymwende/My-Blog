@@ -4,28 +4,24 @@
 
 {% block content %}
     <marquee direction="right">
-        <h3 class="heading text-dark text-center"> Welcome to my blooog </h3>
+        <h3 class="heading text-dark text-center"><i> Welcome to my blooog</i> </h3>
     </marquee>
     {{quote.quote}}
-    {% endblock %}
-    
-{% for blog in blogs %}
-<div class="col-md-4 ">
+{% for blog in current_post %}
+
+<div class="col-md-6" style="background-color:#ACE1AF">
     <div class="text-centre">
-        <div class="card text-white mb-3">
+        <div class="card text-white mb-5">
             <h3 class="card-title">{{blog.category}}</h3>
                 <div class="card-body">
-
-
-            <h4 class="card-header">{{blog.title}}</h4>
-
-            <p class="card-text">{{blog.content}}</p>
-            <p class="card-text">{{blog.created_by| capitalize}}</p>
-            <p class="card-text">{{blog.date_posted.strftime('%Y-%m-%d')}}</p>
-            <a href="/blog" class="tag"><button class="btn-success">Add Blog</button></a>
-            <a href="{{ url_for('main.blog_details', id = blog.id)}}"><button class="btn-success"><i
-            class="fa fa-comment" aria-hidden="true"></i></button></a>
-            </div>
+                    <h4 class="card-header">{{blog.title}}</h4>
+                    <p class="card-text">{{blog.content}}</p>
+                    <p class="card-text">{{blog.created_by| capitalize}}</p>
+                    <p class="card-text">{{blog.date_posted.strftime('%Y-%m-%d')}}</p>
+                    <a href="/blog" class="tag"><button class="btn-success">Add Blog</button></a>
+                    <a href="{{ url_for('main.blog_details', id = blog.id)}}"><button class="btn-success">Comment<i
+                    class="fa fa-comment" aria-hidden="true"></i></button></a>
+                </div>
         </div>
         
         
@@ -33,5 +29,6 @@
     </div> 
     
 </div>    
-    {% endfor %}
+{% endfor %}
+{% endblock %}
 

@@ -70,7 +70,7 @@ def blog_details(id):
         db.session.commit()
         form.comment.data = ''
         flash('Your comment has been posted successfully!')
-    return render_template('comments.html', blog=blogs, comment=comments, comment_form=form)    
+    return render_template('comments.html', blog=blogs, comments=comments, comments_form=form)    
     
     
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
@@ -103,12 +103,12 @@ def update_pic(uname):
 def add_comment():
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(name=form.name.data)
-        db.session.add(comment)
+        comments = Comment(name=form.name.data)
+        db.session.add(comments)
         db.session.commit()
         flash('Comment added successfully.')
         return redirect(url_for('.index'))
-    return render_template('comments.html', form=form)
+    return render_template('comments.html', commentform=form)
     
 
 @main.route('/comment/<int:id>/delete', methods=['GET', 'POST'])
