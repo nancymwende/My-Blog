@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SECRET_KEY ='SECRET_KEY'
+    SECRET_KEY = 'SECRET_KEY'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
@@ -22,7 +22,7 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:nancy1234@localhost/blogs'
+    SQLALCHEMY_DATABASE_URI=os.getenv('SQLALCHEMY_DATABASE_URI')
 
     DEBUG = True
 
