@@ -12,7 +12,7 @@ This is a Python Application where a user(s) can post a blog and also allows oth
 
 ## Live Link
 
-()
+(https://mybloooog.herokuapp.com/ )
 
 
 ## Screenshots
