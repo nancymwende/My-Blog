@@ -18,7 +18,6 @@
                     <p class="card-text">{{blog.content}}</p>
                     <p class="card-text">{{blog.created_by| capitalize}}</p>
                     <p class="card-text">{{blog.date_posted.strftime('%Y-%m-%d')}}</p>
-                    <a href="/blog" class="tag"><button class="btn-success">Add Blog</button></a>
                     <a href="{{ url_for('main.blog_details', id = blog.id)}}"><button class="btn-success">Comment<i
                     class="fa fa-comment" aria-hidden="true"></i></button></a>
                 </div>
@@ -28,7 +27,9 @@
         
     </div> 
     
-</div>    
+</div>
+
 {% endfor %}
+<a href="/blog" class="tag"><button class="btn-success">Add Blog</button></a>
 {% endblock %}
 
